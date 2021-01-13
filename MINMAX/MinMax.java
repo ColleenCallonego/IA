@@ -1,4 +1,6 @@
-import Tree;
+package MINMAX;
+
+import GenerationArbre.Tree;
 
 public class MinMax {
     public static void UpValue(Tree a) {
