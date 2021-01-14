@@ -19,7 +19,7 @@ public class Game {
     static void board_init() {
         board = "1111111111111111";
     }
-
+    //Affichage du plateau de jeu
     static void board_display() {
         System.out.println("   " + board.charAt(0));
         System.out.println("  " + board.substring(1, 4));
@@ -27,6 +27,7 @@ public class Game {
         System.out.println(board.substring(9));
     }
 
+    //Gestion du menu de jeu
     static void menu(){
         Scanner s=new Scanner(System.in);
         String choice;
@@ -35,6 +36,7 @@ public class Game {
         System.out.println("3. Two Players");
 
         choice=s.nextLine();
+        //selection du mode de jeu
         switch (choice){
             case "1":gameMode=modes.PLAYER_FIRST;
                 System.out.println("Single player, player first selected");break;
@@ -50,6 +52,7 @@ public class Game {
         System.out.println("3. Create board from the console");
 
         choice=s.nextLine();
+        //selection du mode d'initialisation du plateau
         switch (choice){
             case "1":board_init();break;
             case "2":System.out.println("Please indicate file path");
@@ -71,6 +74,7 @@ public class Game {
         s.close();
     }
 
+    //Lance la partie avec l'IA qui commence
     static void playAiFirst(Scanner s) {
         int playerTurn = -1;
         while (!board.equals("0000000000000000")) {
@@ -89,6 +93,7 @@ public class Game {
         s.close();
     }
 
+    //Lance la partie avec le joueur qui commence
     static void playPlayerFirst(Scanner s){
         int playerTurn = 1;
         while (!board.equals("0000000000000000")) {
@@ -189,7 +194,7 @@ public class Game {
         return sb.toString();
     }
 
-
+    // Lance une partie en mode 2 joueurs
     static void play2P(Scanner s) {
 
         int playerTurn = 1;
@@ -205,15 +210,19 @@ public class Game {
 
     }
 
+    //Gere le tour de jeu du joueur humain
     private static void playerPlay(Scanner s){
         String choice="";
         String newLine = "";
+        //selection de la ligne à éditer
         do {
             choice = s.nextLine();
         }
         while (!choice.matches("[1234]"));
         System.out.println("Type the modified line");
         newLine = s.nextLine();
+
+        //saise de la nouvelle ligne avec vérification de sa conformité
         while (!LineIsValid(choice, newLine)) {
             System.out.println("Incorrect entry, please type the correct number of only 0 and 1");
             newLine = s.nextLine();
