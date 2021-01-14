@@ -3,6 +3,30 @@ package MINMAX;
 import GenerationArbre.Tree;
 
 public class MinMax {
+    public static String IAPlay(String init){
+        Tree arbre = new Tree(init, 0);
+        arbre = Tree.CreateTree(arbre, 0);
+        MinMax.Valuation(arbre);
+        MinMax.UpValue(arbre);
+        String fin;
+        //si le premier fils est pas bon
+        if (arbre.sons.get(0).score != -1){
+            fin = arbre.sons.get(0).sticks; //on le prend par mesure de precaution
+            int i = 1;
+            while (i < arbre.sons.size() && fin == arbre.sons.get(0).sticks){ //on cherche dans le reste de la liste de fils
+                if (arbre.sons.get(i).score == -1){ //on le prend si on le trouve
+                    fin = arbre.sons.get(i).sticks;
+                }
+            }
+        }
+        else{
+            fin = arbre.sons.get(0).sticks;
+        }
+        return fin;
+    }
+
+
+
     public static void UpValue(Tree a) {
         //Vérification d'être dans un noeud dont tous les fils ont un score
         if (a.score == null) {
