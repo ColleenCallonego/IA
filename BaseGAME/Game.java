@@ -2,7 +2,6 @@ package BaseGAME;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Game {
@@ -162,41 +161,46 @@ public class Game {
 
 
     static void play2P(Scanner s) {
-        String choice = "";
-        String newLine = "";
+
         int playerTurn = 1;
         while (!board.equals("0000000000000000")) {
             board_display();
             System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " select a line to modify (type 1,2,3 or 4)");
-            do {
-                choice = s.nextLine();
-            }
-            while (!choice.matches("[1234]"));
-            System.out.println("Type the modified line");
-            newLine = s.nextLine();
-            while (!LineIsValid(choice, newLine)) {
-                System.out.println("Incorrect entry, please type the correct number of only 0 and 1");
-                newLine = s.nextLine();
-            }
-            switch (choice) {
-                case "1":
-                    board = newLine + board.substring(1);
-                    break;
-                case "2":
-                    board = board.substring(0, 1) + newLine + board.substring(4);
-                    break;
-                case "3":
-                    board = board.substring(0, 4) + newLine + board.substring(9);
-                    break;
-                case "4":
-                    board = board.substring(0, 9) + newLine;
-                    break;
-            }
+            playerPlay(s);
             playerTurn *= -1;
         }
         System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " wins !!!");
         s.close();
 
+    }
+
+    private static void playerPlay(Scanner s){
+        String choice="";
+        String newLine = "";
+        do {
+            choice = s.nextLine();
+        }
+        while (!choice.matches("[1234]"));
+        System.out.println("Type the modified line");
+        newLine = s.nextLine();
+        while (!LineIsValid(choice, newLine)) {
+            System.out.println("Incorrect entry, please type the correct number of only 0 and 1");
+            newLine = s.nextLine();
+        }
+        switch (choice) {
+            case "1":
+                board = newLine + board.substring(1);
+                break;
+            case "2":
+                board = board.substring(0, 1) + newLine + board.substring(4);
+                break;
+            case "3":
+                board = board.substring(0, 4) + newLine + board.substring(9);
+                break;
+            case "4":
+                board = board.substring(0, 9) + newLine;
+                break;
+        }
     }
 
     private static boolean LineIsValid(String lineID, String checkedLine) {
