@@ -16,13 +16,6 @@ public class Tree {
        sons = new ArrayList<Tree>();
    }
 
-   public Tree (String sticks, Integer score, Integer level){
-       this.sticks = sticks;
-       this.score = score;
-       this.level = level;
-       sons = new ArrayList<Tree>();
-   }
-
    public static Tree CreateTree(Tree tree, Integer level){
        if (level == 4){
            return null;
@@ -38,11 +31,11 @@ public class Tree {
                      StringBuilder sb = new StringBuilder(st);
                      sb.deleteCharAt(i);
                      s = sb.toString();
-                     if (s.equals("") && level%2 == 0){
-                         tree.sons.add(new Tree(st, 1, level));
+                     if (s.equals("|||") && level%2 == 0){
+                         tree.sons.add(new Tree(s, level));
                      }
-                     else if (s.equals("") && level%2 != 0){
-                         tree.sons.add(new Tree(st, -1, level));
+                     else if (s.equals("|||") && level%2 != 0){
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
@@ -56,11 +49,11 @@ public class Tree {
                      sb.deleteCharAt(i);
 
                      s = sb.toString();
-                     if (s.equals("") && level%2 == 0){
-                         tree.sons.add(new Tree(st, 1, level));
+                     if (s.equals("|||") && level%2 == 0){
+                         tree.sons.add(new Tree(s, level));
                      }
-                     else if (s.equals("") && level%2 != 0){
-                         tree.sons.add(new Tree(st, -1, level));
+                     else if (s.equals("|||") && level%2 != 0){
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
@@ -79,11 +72,11 @@ public class Tree {
                      sb.deleteCharAt(i);
 
                      s = sb.toString();
-                     if (s.equals("") && level%2 == 0){
-                         tree.sons.add(new Tree(st, 1, level));
+                     if (s.equals("|||") && level%2 == 0){
+                         tree.sons.add(new Tree(s, level));
                      }
-                     else if (s.equals("") && level%2 != 0){
-                         tree.sons.add(new Tree(st, -1, level));
+                     else if (s.equals("|||") && level%2 != 0){
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
@@ -110,11 +103,11 @@ public class Tree {
                      sb.deleteCharAt(i);
 
                      s = sb.toString();
-                     if (s.equals("") && level%2 == 0){
-                         tree.sons.add(new Tree(st, 1, level));
+                     if (s.equals("|||") && level%2 == 0){
+                         tree.sons.add(new Tree(s, level));
                      }
-                     else if (s.equals("") && level%2 != 0){
-                         tree.sons.add(new Tree(st, -1, level));
+                     else if (s.equals("|||") && level%2 != 0){
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
@@ -152,11 +145,11 @@ public class Tree {
                      sb.deleteCharAt(i);
 
                      s = sb.toString();
-                     if (s.equals("") && level%2 == 0){
-                         tree.sons.add(new Tree(st, 1, level));
+                     if (s.equals("|||") && level%2 == 0){
+                         tree.sons.add(new Tree(s, level));
                      }
-                     else if (s.equals("") && level%2 != 0){
-                         tree.sons.add(new Tree(st, -1, level));
+                     else if (s.equals("|||") && level%2 != 0){
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
@@ -208,11 +201,11 @@ public class Tree {
                      sb.deleteCharAt(i);
 
                      s = sb.toString();
-                     if (s.equals("") && level%2 == 0){
-                         tree.sons.add(new Tree(st, 1, level));
+                     if (s.equals("|||") && level%2 == 0){
+                         tree.sons.add(new Tree(s, level));
                      }
-                     else if (s.equals("") && level%2 != 0){
-                         tree.sons.add(new Tree(st, -1, level));
+                     else if (s.equals("|||") && level%2 != 0){
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
@@ -281,11 +274,11 @@ public class Tree {
                      sb.deleteCharAt(i);
 
                      s = sb.toString();
-                     if (s.equals("") && level%2 == 0){
-                         tree.sons.add(new Tree(st, 1, level));
+                     if (s.equals("|||") && level%2 == 0){
+                         tree.sons.add(new Tree(s, level));
                      }
-                     else if (s.equals("") && level%2 != 0){
-                         tree.sons.add(new Tree(st, -1, level));
+                     else if (s.equals("|||") && level%2 != 0){
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
