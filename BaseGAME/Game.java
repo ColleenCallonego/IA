@@ -75,7 +75,7 @@ public class Game {
         int playerTurn = -1;
         while (!board.equals("0000000000000000")) {
             board_display();
-            System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " select a line to modify (type 1,2,3 or 4)");
+            System.out.println((playerTurn > 0 ? "Player select a line to modify (type 1,2,3 or 4)": "AI is playing...") );
             if (playerTurn>0){
                 playerPlay(s);
             }else{
@@ -92,7 +92,7 @@ public class Game {
         int playerTurn = 1;
         while (!board.equals("0000000000000000")) {
             board_display();
-            System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " select a line to modify (type 1,2,3 or 4)");
+            System.out.println((playerTurn > 0 ? "Player select a line to modify (type 1,2,3 or 4)": "AI is playing..."));
             if (playerTurn>0){
                 playerPlay(s);
             }else{
