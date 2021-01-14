@@ -1,4 +1,5 @@
-package génération.arbre;
+package GenerationArbre;
+
 import java.util.ArrayList;
 import java.lang.StringBuilder;
 
