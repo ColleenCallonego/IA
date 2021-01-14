@@ -1,5 +1,7 @@
 package BaseGAME;
 
+import MINMAX.MinMax;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -63,18 +65,44 @@ public class Game {
 
         switch (gameMode){
             case TWO_PLAYERS : play2P(s);break;
-            case AI_FIRST : playAiFirst();break;
-            case PLAYER_FIRST : playPlayerFirst();break;
+            case AI_FIRST : playAiFirst(s);break;
+            case PLAYER_FIRST : playPlayerFirst(s);break;
         }
         s.close();
     }
 
-    static void playAiFirst() {
-// TODO: 14/01/2021  
+    static void playAiFirst(Scanner s) {
+        int playerTurn = -1;
+        while (!board.equals("0000000000000000")) {
+            board_display();
+            System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " select a line to modify (type 1,2,3 or 4)");
+            if (playerTurn>0){
+                playerPlay(s);
+            }else{
+                board=convert(MinMax.IAPlay(board_read()));
+            }
+
+            playerTurn *= -1;
+        }
+        System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " wins !!!");
+        s.close();
     }
 
-    static void playPlayerFirst(){
-// TODO: 14/01/2021
+    static void playPlayerFirst(Scanner s){
+        int playerTurn = 1;
+        while (!board.equals("0000000000000000")) {
+            board_display();
+            System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " select a line to modify (type 1,2,3 or 4)");
+            if (playerTurn>0){
+                playerPlay(s);
+            }else{
+                board=convert(MinMax.IAPlay(board_read()));
+            }
+
+            playerTurn *= -1;
+        }
+        System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " wins !!!");
+        s.close();
     }
     
 
