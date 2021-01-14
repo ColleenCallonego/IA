@@ -1,10 +1,19 @@
 package BaseGAME;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Game {
 
     static String board;
+    enum modes{
+        TWO_PLAYERS,
+        PLAYER_FIRST,
+        AI_FIRST,
+    }
+    static modes gameMode;
 
     static void board_init() {
         board = "1111111111111111";
@@ -15,6 +24,74 @@ public class Game {
         System.out.println("  " + board.substring(1, 4));
         System.out.println(" " + board.substring(4, 9));
         System.out.println(board.substring(9));
+    }
+
+    static void menu(){
+        Scanner s=new Scanner(System.in);
+        String choice;
+        System.out.println("Welcome to this game. Please select a game mode:");
+        System.out.println("1. Player vs AI : player starts          2. Player vs AI : AI starts");
+        System.out.println("3. Two Players");
+
+        choice=s.nextLine();
+        switch (choice){
+            case "1"->{gameMode=modes.PLAYER_FIRST;
+                System.out.println("Single player, player first selected");}
+            case "2"->{gameMode=modes.AI_FIRST;
+                System.out.println("Single player, AI first selected");}
+            case "3"->{gameMode=modes.TWO_PLAYERS;
+                System.out.println("Player vs Player selected");}
+            default ->{System.out.println("Wrong answer, please type select 1,2 or 3 next time.");
+                menu();}
+        }
+        System.out.println("Now, please select the way you want to initialize the board:");
+        System.out.println("1. Default board          2. Load board from file");
+        System.out.println("3. Create board from the console");
+
+        choice=s.nextLine();
+        switch (choice){
+            case "1"->board_init();
+            case "2"->{System.out.println("Please indicate file path");
+            board=loadFromFile(s.nextLine()); }
+            case "3"->{System.out.println("Please type a string of length 16 composed of only 1s and 0s");
+                board=s.nextLine(); }
+        }
+        if (!board.matches("[01]{16}")){
+            System.out.println("Invalid format, please try again");
+            menu();
+        }
+
+
+        switch (gameMode){
+            case TWO_PLAYERS -> play2P(s);
+            case AI_FIRST -> playAiFirst();
+            case PLAYER_FIRST -> playPlayerFirst();
+        }
+        s.close();
+    }
+
+    static void playAiFirst() {
+// TODO: 14/01/2021  
+    }
+
+    static void playPlayerFirst(){
+// TODO: 14/01/2021
+    }
+    
+
+    private static String loadFromFile(String path){
+        File f=new File(path);
+        Scanner s= null;
+        String result="";
+        try {
+            s = new Scanner(f);
+            result=s.nextLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        return result;
     }
 
     static String board_read() {
@@ -84,11 +161,9 @@ public class Game {
     }
 
 
-    static void play2P() {
-        Scanner s = new Scanner(System.in);
+    static void play2P(Scanner s) {
         String choice = "";
         String newLine = "";
-        board_init();
         int playerTurn = 1;
         while (!board.equals("0000000000000000")) {
             board_display();
@@ -120,6 +195,7 @@ public class Game {
             playerTurn *= -1;
         }
         System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " wins !!!");
+        s.close();
 
     }
 
