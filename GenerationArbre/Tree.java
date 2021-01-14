@@ -34,7 +34,7 @@ public class Tree {
                          tree.sons.add(new Tree(s, level + 1));
                      }
                      else if (s.equals("|||") && level%2 != 0){
-                         tree.sons.add(new Tree(s,  + 1));
+                         tree.sons.add(new Tree(s,  level+ 1));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level + 1), level+1 ));
