@@ -10,10 +10,7 @@ public class Main {
 
 
 
-        Tree arbre = new Tree("1|3|5|7", 0);
-        arbre = Tree.CreateTree(arbre, 0);
-        //MinMax.Valuation(arbre);
-        //MinMax.UpValue(arbre);
+        //System.out.println(MinMax.IAPlay("1|3|5|7"));
         //Game.play2P();
     }
 }

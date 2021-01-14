@@ -13,10 +13,11 @@ public class MinMax {
         if (arbre.sons.get(0).score != -1){
             fin = arbre.sons.get(0).sticks; //on le prend par mesure de precaution
             int i = 1;
-            while (i < arbre.sons.size() && fin == arbre.sons.get(0).sticks){ //on cherche dans le reste de la liste de fils
+            while (i < arbre.sons.size() && fin.equals(arbre.sons.get(0).sticks)){ //on cherche dans le reste de la liste de fils
                 if (arbre.sons.get(i).score == -1){ //on le prend si on le trouve
                     fin = arbre.sons.get(i).sticks;
                 }
+                i++;
             }
         }
         else{
