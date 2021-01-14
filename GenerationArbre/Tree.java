@@ -275,10 +275,10 @@ public class Tree {
 
                      s = sb.toString();
                      if (s.equals("|||") && level%2 == 0){
-                         tree.sons.add(new Tree(st, level));
+                         tree.sons.add(new Tree(s, level));
                      }
                      else if (s.equals("|||") && level%2 != 0){
-                         tree.sons.add(new Tree(st, level));
+                         tree.sons.add(new Tree(s, level));
                      }
                      else{
                          tree.sons.add(CreateTree(new Tree(s, level), level + 1 ));
