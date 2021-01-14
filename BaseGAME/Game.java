@@ -17,6 +17,38 @@ public class Game {
         System.out.println(board.substring(9));
     }
 
+    static String convert(String str) {
+        StringBuilder sb=new StringBuilder("0000000000000000");
+        int row = 1;
+        char c;
+        int n = 0;
+        char previous;
+        int writeindex=0;
+        for (int i = 0; i < str.length(); i++) {
+            c = str.charAt(i);
+
+            if (c == '|') {
+
+                row++;
+                switch (row){
+                    case 2:writeindex=1;break;
+                    case 3:writeindex=4;break;
+                    case 4:writeindex=9;break;
+                }
+            } else {
+                n = Integer.parseInt(String.valueOf(c));
+
+                for (int j = 0; j <n ; j++) {
+                    sb.setCharAt(writeindex+j,'1');
+                }
+                writeindex+=n+1;
+
+
+            }
+        }
+        return sb.toString();
+    }
+
 
     static void play2P() {
         Scanner s = new Scanner(System.in);
