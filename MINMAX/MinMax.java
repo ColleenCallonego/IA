@@ -41,6 +41,7 @@ public class MinMax {
 
 
     public static void Valuation(Tree a) {
+        System.out.println(a.sticks);
         if ( !a.sons.isEmpty() && a.sons.get(0) != null) {
             for (Tree sons : a.sons) {
                 Valuation(sons);
@@ -53,9 +54,6 @@ public class MinMax {
             int som3 = 0;
             int som4 = 0;
             int barre = 0;
-            System.out.println(" ");
-            System.out.println(" ");
-            System.out.println(" ");
             for (int i = 0; i < a.sticks.length(); i++) {
                 Character c = a.sticks.charAt(i);
                 if (!c.equals('|')) {
@@ -109,17 +107,11 @@ public class MinMax {
             if(BiSom4.length()==2){
                 BiSom4 = "0" + BiSom4;
             }
-            System.out.println(BiSom1);
-            System.out.println(BiSom2);
-            System.out.println(BiSom3);
-            System.out.println(BiSom4);
-            System.out.println("");
             //faire la somme de chaque colonne des binaire
             int num1 = Integer.parseInt(String.valueOf(BiSom1.charAt(0))) + Integer.parseInt(String.valueOf(BiSom2.charAt(0))) + Integer.parseInt(String.valueOf(BiSom3.charAt(0))) + Integer.parseInt(String.valueOf(BiSom4.charAt(0)));
             int num2 = Integer.parseInt(String.valueOf(BiSom1.charAt(1))) + Integer.parseInt(String.valueOf(BiSom2.charAt(1))) + Integer.parseInt(String.valueOf(BiSom3.charAt(1))) + Integer.parseInt(String.valueOf(BiSom4.charAt(1)));
             int num3 = Integer.parseInt(String.valueOf(BiSom1.charAt(2))) + Integer.parseInt(String.valueOf(BiSom2.charAt(2))) + Integer.parseInt(String.valueOf(BiSom3.charAt(2))) + Integer.parseInt(String.valueOf(BiSom4.charAt(2)));
             //possible ajustement a faire sur la valuation des feuilles
-            System.out.println(num1 + "" + num2 + "" + num3);
             if(num1 != 0 || num2 != 0){
                 if (num1 % 2 == 0 && num2 % 2 == 0 && num3 % 2 == 0) { //si les chiffres sont paires, alors score = -1
                     a.score = -1;
@@ -136,7 +128,14 @@ public class MinMax {
                     a.score = 1;
                 }
             }
-            System.out.println(a.score);
+            if (num1 + num2 + num3 == 0){
+                if (a.level == 2){
+                    a.score = -1;
+                }
+                else{
+                    a.score = 1;
+                }
+            }
         }
     }
 }
