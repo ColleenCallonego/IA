@@ -35,14 +35,14 @@ public class Game {
 
         choice=s.nextLine();
         switch (choice){
-            case "1"->{gameMode=modes.PLAYER_FIRST;
-                System.out.println("Single player, player first selected");}
-            case "2"->{gameMode=modes.AI_FIRST;
-                System.out.println("Single player, AI first selected");}
-            case "3"->{gameMode=modes.TWO_PLAYERS;
-                System.out.println("Player vs Player selected");}
-            default ->{System.out.println("Wrong answer, please type select 1,2 or 3 next time.");
-                menu();}
+            case "1":gameMode=modes.PLAYER_FIRST;
+                System.out.println("Single player, player first selected");break;
+            case "2":gameMode=modes.AI_FIRST;
+                System.out.println("Single player, AI first selected");break;
+            case "3":gameMode=modes.TWO_PLAYERS;
+                System.out.println("Player vs Player selected");break;
+            default :System.out.println("Wrong answer, please type select 1,2 or 3 next time.");
+                menu();break;
         }
         System.out.println("Now, please select the way you want to initialize the board:");
         System.out.println("1. Default board          2. Load board from file");
@@ -50,11 +50,11 @@ public class Game {
 
         choice=s.nextLine();
         switch (choice){
-            case "1"->board_init();
-            case "2"->{System.out.println("Please indicate file path");
-            board=loadFromFile(s.nextLine()); }
-            case "3"->{System.out.println("Please type a string of length 16 composed of only 1s and 0s");
-                board=s.nextLine(); }
+            case "1":board_init();break;
+            case "2":System.out.println("Please indicate file path");
+            board=loadFromFile(s.nextLine());break;
+            case "3":System.out.println("Please type a string of length 16 composed of only 1s and 0s");
+                board=s.nextLine();break;
         }
         if (!board.matches("[01]{16}")){
             System.out.println("Invalid format, please try again");
@@ -63,9 +63,9 @@ public class Game {
 
 
         switch (gameMode){
-            case TWO_PLAYERS -> play2P(s);
-            case AI_FIRST -> playAiFirst();
-            case PLAYER_FIRST -> playPlayerFirst();
+            case TWO_PLAYERS : play2P(s);break;
+            case AI_FIRST : playAiFirst();break;
+            case PLAYER_FIRST : playPlayerFirst();break;
         }
         s.close();
     }
