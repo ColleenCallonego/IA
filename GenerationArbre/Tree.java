@@ -21,8 +21,6 @@ public class Tree {
            return tree;
        }
        else{
-            System.out.println(tree.sticks);
-            System.out.println(tree.level);
             String st = tree.sticks;
             String s = "";
             Character c; 
@@ -286,7 +284,6 @@ public class Tree {
                      }
                 }
             }
-            System.out.println(tree.sons);
             return tree;
         }
    }

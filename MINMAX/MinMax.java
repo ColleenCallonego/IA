@@ -65,7 +65,6 @@ public class MinMax {
 
 
     public static void Valuation(Tree a) {
-        System.out.println(a.sticks);
         if ( !a.sons.isEmpty() && a.sons.get(0) != null) {
             for (Tree sons : a.sons) {
                 Valuation(sons);
