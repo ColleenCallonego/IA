@@ -101,7 +101,7 @@ public class Game {
 
             playerTurn *= -1;
         }
-        System.out.println((playerTurn < 0 ? "Player" : "AI") + " wins !!!");
+        System.out.println((playerTurn > 0 ? "Player" : "AI") + " wins !!!");
         s.close();
     }
     
