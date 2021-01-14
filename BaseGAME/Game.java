@@ -84,7 +84,8 @@ public class Game {
 
             playerTurn *= -1;
         }
-        System.out.println((playerTurn > 0 ? "AI" : "Player") + " wins !!!");
+        board_display();
+        System.out.println((playerTurn < 0 ? "AI" : "Player") + " wins !!!");
         s.close();
     }
 
@@ -101,7 +102,8 @@ public class Game {
 
             playerTurn *= -1;
         }
-        System.out.println((playerTurn < 0 ? "Player" : "AI") + " wins !!!");
+        board_display();
+        System.out.println((playerTurn > 0 ? "Player" : "AI") + " wins !!!");
         s.close();
     }
     
@@ -197,6 +199,7 @@ public class Game {
             playerPlay(s);
             playerTurn *= -1;
         }
+        board_display();
         System.out.println("Player " + (playerTurn > 0 ? "1" : "2") + " wins !!!");
         s.close();
 
