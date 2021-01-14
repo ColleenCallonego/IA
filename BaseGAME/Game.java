@@ -17,31 +17,65 @@ public class Game {
         System.out.println(board.substring(9));
     }
 
+    static String board_read() {
+        String result = "";
+        char c;
+        int[] array = new int[]{1, 4, 9, 16};
+        int startId = 0;
+        int stickNumber;
+        for (int i = 0; i < 4; i++) {
+            stickNumber = 0;
+            for (int j = startId; j < array[i]; j++) {
+                c = board.charAt(j);
+                if (c == '1') {
+                    stickNumber++;
+                }
+                if (c == '0' && stickNumber != 0) {
+                    result += String.valueOf(stickNumber);
+                    stickNumber = 0;
+                }
+            }
+            if (stickNumber != 0)
+                result += String.valueOf(stickNumber);
+            if (i < 3)
+                result += '|';
+            startId = array[i];
+
+        }
+        return result;
+    }
+
     static String convert(String str) {
-        StringBuilder sb=new StringBuilder("0000000000000000");
+        StringBuilder sb = new StringBuilder("0000000000000000");
         int row = 1;
         char c;
         int n = 0;
         char previous;
-        int writeindex=0;
+        int writeindex = 0;
         for (int i = 0; i < str.length(); i++) {
             c = str.charAt(i);
 
             if (c == '|') {
 
                 row++;
-                switch (row){
-                    case 2:writeindex=1;break;
-                    case 3:writeindex=4;break;
-                    case 4:writeindex=9;break;
+                switch (row) {
+                    case 2:
+                        writeindex = 1;
+                        break;
+                    case 3:
+                        writeindex = 4;
+                        break;
+                    case 4:
+                        writeindex = 9;
+                        break;
                 }
             } else {
                 n = Integer.parseInt(String.valueOf(c));
 
-                for (int j = 0; j <n ; j++) {
-                    sb.setCharAt(writeindex+j,'1');
+                for (int j = 0; j < n; j++) {
+                    sb.setCharAt(writeindex + j, '1');
                 }
-                writeindex+=n+1;
+                writeindex += n + 1;
 
 
             }
